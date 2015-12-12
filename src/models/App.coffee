@@ -3,7 +3,19 @@
 class window.App extends Backbone.Model
   initialize: ->
     @set 'deck', deck = new Deck()
+    # console.log(deck)
     @set 'playerHand', deck.dealPlayer()
+    console.log(@get('playerHand'))
+    @set 'dealerHand', deck.dealDealer()
+    @get('playerHand').on('hit', @hitting, @)
+    @get('playerHand').on('stand', @standing, @)
+  
+  gamestart: ->
+    console.log('gamestart')
+    @set 'deck', deck = new Deck()
+    
+    @set 'playerHand', deck.dealPlayer()
+    console.log(@get('playerHand'))
     @set 'dealerHand', deck.dealDealer()
     @get('playerHand').on('hit', @hitting, @)
     @get('playerHand').on('stand', @standing, @)
