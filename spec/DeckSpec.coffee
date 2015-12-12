@@ -13,3 +13,13 @@ describe 'deck', ->
       assert.strictEqual deck.length, 50
       assert.strictEqual deck.last(), hand.hit()
       assert.strictEqual deck.length, 49
+
+      
+
+  describe 'deal', ->
+    it 'should populate dealer hand as expected', ->
+      cardSearch = deck.at(deck.length-3)
+      player = deck.dealPlayer()
+      dealer = deck.dealDealer()
+      assert.strictEqual dealer.at(0), cardSearch
+    
