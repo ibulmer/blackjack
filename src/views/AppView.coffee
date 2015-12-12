@@ -7,22 +7,22 @@ class window.AppView extends Backbone.View
 
   events:
     'click .hit-button': -> @model.get('playerHand').hit()
-    'click .stand-button': -> @stand()
+    'click .stand-button': -> @model.get('playerHand').stand()
   
-  stand: -> 
-    @model.get('dealerHand').at(0).flip()
-    playerHandScore = if @model.get('playerHand').scores()[1] > 21 then @model.get('playerHand').scores()[0] else @model.get('playerHand').scores()[1] 
+  # stand: -> 
+  #   @model.get('dealerHand').at(0).flip()
+  #   playerHandScore = if @model.get('playerHand').scores()[1] > 21 then @model.get('playerHand').scores()[0] else @model.get('playerHand').scores()[1] 
     
-    while (@model.get('dealerHand').scores()[1] < 17 || (@model.get('dealerHand').scores()[1] > 21 && @model.get('dealerHand').scores()[0] < 17) )
-      @model.get('dealerHand').hit()
-      console.log('dealer hit')
+  #   while (@model.get('dealerHand').scores()[1] < 17 || (@model.get('dealerHand').scores()[1] > 21 && @model.get('dealerHand').scores()[0] < 17) )
+  #     @model.get('dealerHand').hit()
+  #     console.log('dealer hit')
 
-    if @model.get('dealerHand').scores()[1] < playerHandScore || @model.get('dealerHand').scores()[0] > 21
-      console.log('player wins')
-    else if @model.get('dealerHand').scores()[1] == playerHandScore
-       console.log("e")
-    else
-      console.log('dealer wins')
+  #   if @model.get('dealerHand').scores()[1] < playerHandScore || @model.get('dealerHand').scores()[0] > 21
+  #     console.log('player wins')
+  #   else if @model.get('dealerHand').scores()[1] == playerHandScore
+  #      console.log("e")
+  #   else
+  #     console.log('dealer wins')
 
   initialize: ->
     @render()

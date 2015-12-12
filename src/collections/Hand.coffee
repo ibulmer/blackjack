@@ -13,10 +13,13 @@ class window.Hand extends Backbone.Collection
 
   # listen to the dealer?
   stand: -> 
+    @trigger "stand", @
+    console.log("standing")
 
   hit: ->
     @add(@deck.pop())
     @last()
+    @trigger  "hit", @
     # event triggered every time 
 
   hasAce: -> @reduce (memo, card) ->
