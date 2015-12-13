@@ -6,6 +6,9 @@ class window.CardView extends Backbone.View
   # template: _.template '<img src = "img/<% if(!obj.revealed) { %><%} else { %> cards/<%=rankName%>-<%=suitName%> <%} %>.png">'
   initialize: -> @render()
 
+    #when click, update the model
+  
+
   render: ->
     @$el.children().detach()
     @$el.html @template @model.attributes

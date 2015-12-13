@@ -18,3 +18,8 @@ body {
 .points{
   color: rgb(230,230,230);
 }
+
+.score{
+  color: white;
+  /*font-size: 20px*/
+}

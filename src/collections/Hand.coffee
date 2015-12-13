@@ -2,16 +2,10 @@ class window.Hand extends Backbone.Collection
   model: Card
 
   initialize: (array, @deck, @isDealer) ->
-     #listenere intiiated
-
-     # firs time [r1, r2], this, true/false
-
-     #listen for change in the minscore && the score is less than 21
-        #if so, next event
-     @.on 'add', => if ((@scores()[0]) > 21)
+  
+    @.on 'add', => if ((@scores()[0]) > 21)
       console.log('you lose')
 
-  # listen to the dealer?
   stand: -> 
     @trigger "stand", @
     console.log("standing")
@@ -20,7 +14,6 @@ class window.Hand extends Backbone.Collection
     @add(@deck.pop())
     @last()
     @trigger  "hit", @
-    # event triggered every time 
 
   hasAce: -> @reduce (memo, card) ->
     memo or card.get('value') is 1
